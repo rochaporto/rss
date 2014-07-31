@@ -7,6 +7,7 @@ import (
 
 func parseTime(s string) (time.Time, error) {
 	formats := []string{
+		"_2 Jan 2006 15:04:05 MST",
 		"Mon, _2 Jan 2006 15:04:05 MST",
 		"Mon, _2 Jan 2006 15:04:05 -0700",
 		time.ANSIC,
@@ -22,16 +23,16 @@ func parseTime(s string) (time.Time, error) {
 	}
 
 	s = strings.TrimSpace(s)
-	
+
 	var e error
 	var t time.Time
-	
+
 	for _, format := range formats {
 		t, e = time.Parse(format, s)
 		if e == nil {
 			return t, e
 		}
 	}
-	
+
 	return time.Time{}, e
 }
