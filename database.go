@@ -3,7 +3,7 @@ package rss
 var database *db
 var disabled bool
 
-func init() {
+func Init() {
 	database = NewDB()
 	go database.Run()
 }
